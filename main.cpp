@@ -44,6 +44,7 @@ int main()
     Vector3D<float> cross_product = Math::cross(vec_7, vec_8);
     std::cout << "Cross product: " << cross_product.getX() << ", " << cross_product.getY() << ", " << cross_product.getZ() << '\n'; 
 
+    std::cout << "PI = " << PI << '\n';
 
     return 0;
 }

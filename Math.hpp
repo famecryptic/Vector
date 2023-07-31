@@ -2,6 +2,8 @@
 
 #include "Vector3D.hpp"
 
+const float PI = 3.141592;
+
 namespace Math
 {
     template<typename T>    

@@ -57,7 +57,6 @@ void Vector3D<T>::normalize()
     z /= sqrt_of_num;
 }
 
-
 template<typename F>
 Vector3D<F> operator+(const Vector3D<F>& v1, const Vector3D<F>& v2)
 {
