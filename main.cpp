@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #include "Vector3D.hpp"
 #include "Matrix3D.hpp"
@@ -48,9 +49,20 @@ int main()
     Matrix3D<float> B(1, 7, 9, 9, 0, 5, 4, 3, 1);
     std::cout << "B = \n"; B.printMatrix3D();
 
+    // rotation matrices
+    float theta = PI / 2;
+    Matrix3D<float> RotX(1, 0, 0, 0, cos(theta), -sin(theta), 0, sin(theta), cos(theta));
+    std::cout << "RotX = \n"; RotX.printMatrix3D();
+
+    Matrix3D<float> RotY(cos(theta), 0, sin(theta), 0, 1, 0, -sin(theta), 0, cos(theta));
+    std::cout << "RotY = \n"; RotY.printMatrix3D();
+
+    Matrix3D<float> RotZ(cos(theta), -sin(theta), 0, sin(theta), cos(theta), 0, 0, 0, 1);
+    std::cout << "RotZ = \n"; RotZ.printMatrix3D();
+
     // matrix-vector multiplication
-    Vector3D<float> v6 = A * v1;
-    std::cout << "A(v1) = "; v6.printVector3D();
+    Vector3D<float> v6 = RotY * v1;
+    std::cout << "RotY(v1) = "; v6.printVector3D();
 
     // matrix-matrix multiplication
     Matrix3D<float> C = A * B;

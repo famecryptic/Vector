@@ -2,7 +2,7 @@
 
 #include "Vector3D.hpp"
 
-const float PI = 3.141592;
+const float PI = 3.14;
 
 namespace Math
 {
