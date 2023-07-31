@@ -17,13 +17,11 @@ public:
     friend Vector3D<F> operator+(const Vector3D<F>& v1, const Vector3D<F>& v2);
 
     template<class F>
-    friend F operator*(const Vector3D<F>& v1, const Vector3D<F>& v2);
+    friend Vector3D<F> operator-(const Vector3D<F>& v1, const Vector3D<F>& v2);
 
-    // multiply LHS with F
     template<class F>
     friend Vector3D<F> operator*(const F scalar, const Vector3D<F>& v);
 
-    // multiply RHS with F
     template<class F>
     friend Vector3D<F> operator*(const Vector3D<F>& v, const F scalar);
 };
@@ -36,9 +34,9 @@ Vector3D<F> operator+(const Vector3D<F>& v1, const Vector3D<F>& v2)
 }
 
 template<class F>
-F operator*(const Vector3D<F>& v1, const Vector3D<F>& v2)
+Vector3D<F> operator-(const Vector3D<F>& v1, const Vector3D<F>& v2)
 {
-    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    return Vector3D<F>(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
 }
 
 template<class F>

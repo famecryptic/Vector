@@ -12,12 +12,12 @@ int main()
     Vector3D<float> vec_3 = vec_1 + vec_2;
     std::cout << "Components: " << vec_3.getX() << ", " << vec_3.getY() << ", " << vec_3.getZ() << '\n';
 
-    float res = vec_3 * vec_3;
-    std::cout << "Dot product: " << res << '\n';
+    Vector3D<float> vec_4 = vec_1 - vec_2;
+    std::cout << "Components: " << vec_4.getX() << ", " << vec_4.getY() << ", " << vec_4.getZ() << '\n';
 
     float scalar = 5.0f;
-    Vector3D<float> vec_4 = scalar * vec_3;
-    std::cout << "Components: " << vec_4.getX() << ", " << vec_4.getY() << ", " << vec_4.getZ() << '\n';
+    Vector3D<float> vec_5 = scalar * vec_3;
+    std::cout << "Components: " << vec_5.getX() << ", " << vec_5.getY() << ", " << vec_5.getZ() << '\n';
 
     return 0;
 }
