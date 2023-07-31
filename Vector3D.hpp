@@ -1,5 +1,4 @@
 #pragma once
-#include<iostream>
 
 template<class T>
 class Vector3D {
@@ -10,6 +9,8 @@ public:
     T getX() const {return x;};
     T getY() const {return y;};
     T getZ() const {return z;};
+
+    void printVector3D() const;
 
     T getMagnitude() const;
 
@@ -30,6 +31,12 @@ public:
 private:
     T x, y, z;
 };
+
+template<class T>
+void Vector3D<T>::printVector3D() const
+{
+    std::cout << "(" << x << ", " << y << ", " << z << ")" << '\n';
+}
 
 template<typename T>
 T Vector3D<T>::getMagnitude() const

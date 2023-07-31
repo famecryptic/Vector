@@ -1,50 +1,72 @@
 #include <iostream>
 
 #include "Vector3D.hpp"
+#include "Matrix3D.hpp"
 #include "Math.hpp"
 
 int main()
 {
-    Vector3D<float> vec_0;
-    Vector3D<float> vec_1(2.0f, 10.0f, 2.0f);
-    Vector3D<float> vec_2(4.0f, 5.0f, 3.0f);
-    std::cout << "Components: " << vec_0.getX() << ", " << vec_0.getY() << ", " << vec_0.getZ() << '\n';
-    std::cout << "Components: " << vec_1.getX() << ", " << vec_1.getY() << ", " << vec_1.getZ() << '\n';
-    std::cout << "Components: " << vec_2.getX() << ", " << vec_2.getY() << ", " << vec_2.getZ() << '\n';
+    std::cout << "PI = " << PI << '\n';
+
+    // VECTOR -------------------------------------------------------------------------------------
+    std::cout << "\nVECTOR -------------------------------------------------------------------------" << '\n';
+    Vector3D<float> v0;
+    Vector3D<float> v1(1, 0, 0);
+    Vector3D<float> v2(0, 0, 1);
+    std::cout << "v0 = "; v0.printVector3D();
+    std::cout << "v1 = "; v1.printVector3D();
+    std::cout << "v2 = "; v2.printVector3D();
 
     // addition
-    Vector3D<float> vec_3 = vec_1 + vec_2;
-    std::cout << "Components: " << vec_3.getX() << ", " << vec_3.getY() << ", " << vec_3.getZ() << '\n';
+    Vector3D<float> v3 = v1 + v2;
+    std::cout << "v1 + v2 = "; v3.printVector3D();
 
     // subtraction
-    Vector3D<float> vec_4 = vec_1 - vec_2;
-    std::cout << "Components: " << vec_4.getX() << ", " << vec_4.getY() << ", " << vec_4.getZ() << '\n';
+    Vector3D<float> v4 = v1 - v2;
+    std::cout << "v1 - v2 = "; v4.printVector3D();
 
     // scalar multiplication
-    float scalar = 5.0f;
-    Vector3D<float> vec_5 = scalar * vec_3;
-    std::cout << "Components: " << vec_5.getX() << ", " << vec_5.getY() << ", " << vec_5.getZ() << '\n';
+    float c = 10;
+    Vector3D<float> v5 = c * v1;
+    std::cout << "c * v1 = "; v5.printVector3D();
 
-    // magnitude
-    Vector3D<float> vec_6(5.0f, 2.0f, 10.0f); 
-    std::cout << "Components: " << vec_6.getX() << ", " << vec_6.getY() << ", " << vec_6.getZ() << '\n';
-    std::cout << "Magnitude: " << vec_6.getMagnitude() << '\n';
+    // magnitude 
+    std::cout << "|v1| = " << v1.getMagnitude() << '\n';
 
     // normalization
-    vec_6.normalize();
-    std::cout << "Normalized: " << vec_6.getX() << ", " << vec_6.getY() << ", " << vec_6.getZ() << '\n';
+    v1.normalize();
+    std::cout << "v1 / |v1| = "; v1.printVector3D();
 
+    // MATRIX -------------------------------------------------------------------------------------
+    std::cout << "\nMATRIX -------------------------------------------------------------------------" << '\n';
+    Matrix3D<float> zero_matrix;
+    std::cout << "zero matrix = \n"; zero_matrix.printMatrix3D();
+
+    Matrix3D<float> A(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    std::cout << "A = \n"; A.printMatrix3D();
+
+    Matrix3D<float> B(1, 7, 9, 9, 0, 5, 4, 3, 1);
+    std::cout << "B = \n"; B.printMatrix3D();
+
+    // matrix-vector multiplication
+    Vector3D<float> v6 = A * v1;
+    std::cout << "A(v1) = "; v6.printVector3D();
+
+    // matrix-matrix multiplication
+    Matrix3D<float> C = A * B;
+    std::cout << "AB = \n"; C.printMatrix3D();
+
+    // MATH ---------------------------------------------------------------------------------------
+    std::cout << "\nMATH -------------------------------------------------------------------------" << '\n';
     // dot product
-    float dot_product = Math::dot(vec_1, vec_2);
-    std::cout << "Dot product: " << dot_product << '\n';
+    float dot_product = Math::dot(v1, v2);
+    std::cout << "v1 . v2 = " << dot_product << '\n';
 
     // cross product
-    Vector3D<float> vec_7(1.0f, 0.0f, 0.0f);
-    Vector3D<float> vec_8(0.0f, 0.0f, 1.0f);
-    Vector3D<float> cross_product = Math::cross(vec_7, vec_8);
-    std::cout << "Cross product: " << cross_product.getX() << ", " << cross_product.getY() << ", " << cross_product.getZ() << '\n'; 
+    Vector3D<float> cross_product = Math::cross(v1, v2);
+    std::cout << "v1 x v2 = "; cross_product.printVector3D();
 
-    std::cout << "PI = " << PI << '\n';
+
 
     return 0;
 }
