@@ -34,7 +34,7 @@ private:
 
 template<class T>
 void Matrix3D<T>::printMatrix3D() const
-{
+{   
     std::cout << xx << " " << xy << " " << xz << '\n';
     std::cout << yx << " " << yy << " " << yz << '\n';
     std::cout << zx << " " << zy << " " << zz << '\n';
