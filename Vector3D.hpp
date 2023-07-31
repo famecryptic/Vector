@@ -11,27 +11,28 @@ public:
     T getY() const {return y;};
     T getZ() const {return z;};
 
+    T getMagnitude();
+
     void normalize();
 
-    template<class F>
+    template<typename F>
     friend Vector3D<F> operator+(const Vector3D<F>& v1, const Vector3D<F>& v2);
 
-    template<class F>
+    template<typename F>
     friend Vector3D<F> operator-(const Vector3D<F>& v1, const Vector3D<F>& v2);
 
-    template<class F>
+    template<typename F>
     friend Vector3D<F> operator*(const F scalar, const Vector3D<F>& v);
 
-    template<class F>
+    template<typename F>
     friend Vector3D<F> operator*(const Vector3D<F>& v, const F scalar);
-
 
 private:
     T x, y, z;
 };
 
-template<class T>
-void Vector3D<T>::normalize()
+template<typename T>
+T Vector3D<T>::getMagnitude()
 {
     T num = x * x + y * y + z * z;
     T sqrt_of_num;
@@ -44,31 +45,38 @@ void Vector3D<T>::normalize()
         sqrt_of_num -= (f / g);
     }
 
+    return sqrt_of_num;
+}
+
+template<typename T>
+void Vector3D<T>::normalize()
+{
+    T sqrt_of_num = getMagnitude();
     x /= sqrt_of_num;
     y /= sqrt_of_num;
     z /= sqrt_of_num;
 }
 
 
-template<class F>
+template<typename F>
 Vector3D<F> operator+(const Vector3D<F>& v1, const Vector3D<F>& v2)
 {
     return Vector3D<F>(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
 }
 
-template<class F>
+template<typename F>
 Vector3D<F> operator-(const Vector3D<F>& v1, const Vector3D<F>& v2)
 {
     return Vector3D<F>(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
 }
 
-template<class F>
+template<typename F>
 Vector3D<F> operator*(const F scalar, const Vector3D<F>& v)
 {
     return Vector3D<F>(scalar * v.x, scalar * v.y, scalar * v.z);
 }
 
-template<class F>
+template<typename F>
 Vector3D<F> operator*(const Vector3D<F>& v, const F scalar)
 {
     return Vector3D<F>(scalar * v.x, scalar * v.y, scalar * v.z);
