@@ -11,7 +11,7 @@ public:
     T getY() const {return y;};
     T getZ() const {return z;};
 
-    T getMagnitude();
+    T getMagnitude() const;
 
     void normalize();
 
@@ -32,7 +32,7 @@ private:
 };
 
 template<typename T>
-T Vector3D<T>::getMagnitude()
+T Vector3D<T>::getMagnitude() const
 {
     T num = x * x + y * y + z * z;
     T sqrt_of_num;
