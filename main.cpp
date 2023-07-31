@@ -19,5 +19,11 @@ int main()
     Vector3D<float> vec_5 = scalar * vec_3;
     std::cout << "Components: " << vec_5.getX() << ", " << vec_5.getY() << ", " << vec_5.getZ() << '\n';
 
+    Vector3D<float> vec_6(5.0f, 2.0f, 10.78f);
+    std::cout << "Components: " << vec_6.getX() << ", " << vec_6.getY() << ", " << vec_6.getZ() << '\n';
+    vec_6.normalize();
+    std::cout << "Normalized: " << vec_6.getX() << ", " << vec_6.getY() << ", " << vec_6.getZ() << '\n';
+
+
     return 0;
 }
